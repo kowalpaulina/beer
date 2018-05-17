@@ -1,0 +1,30 @@
+<h1 class="invitation">Welcome to the Kingdom of Beer</h1>
+
+<table class="beer-table">
+    <thead>
+        <tr>
+            <th class="short"> # </th>
+            <th> Name </th>
+            <th> Tagline </th>
+            <th> First brewed </th>
+            <th class="short"> ABV </th>
+            <th class="short"> IBU </th>
+            <th class="short"> EBC </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let beer of beers" (click)="showDetails(beer)">
+            <td class="short"> {{ beer.id }}. </td>
+            <td> {{ beer.name }} </td>
+            <td> {{ beer.tagline || "" }} </td>
+            <td> {{ beer.first_brewed || "" }} </td>
+            <td class="short"> {{ beer.abv || "" }} </td>
+            <td class="short"> {{ beer.ibu || "" }} </td>
+            <td class="short"> {{ beer.ebc || "" }} </td>
+        </tr>
+    </tbody>
+</table>
+
+<my-pagination (goPage)="goToPage($event)" (goNext)="onNext()" (goPrev)="onPrev()" [pagesToShow]="7" [page]="page" [perPage]="limit"
+    [count]="total">
+</my-pagination>
